@@ -7,7 +7,9 @@ const Navbar = () => {
 
   return (
     <div className=" flex items-center justify-between py-5 font-medium">
-      <img src={assets.logo} className="w-40" alt="" />
+      <NavLink to="/">
+        <img src={assets.logo} className="w-40" alt="" />
+      </NavLink>
 
       <ul className="hidden sm:flex gap-5 text-sm text-gray-700">
         <NavLink to="/" className="flex flex-col items-center gap-1 ">
@@ -86,26 +88,30 @@ const Navbar = () => {
             />
             <p>Back</p>
           </div>
-          <NavLink to="/" onClick={()=>setVisible(false)} className="py-3 pl-5 border  text-black opacity-90">
+          <NavLink
+            to="/"
+            onClick={() => setVisible(false)}
+            className="py-3 pl-5 border  text-black opacity-90"
+          >
             HOME
           </NavLink>
           <NavLink
             to="/collection"
-            onClick={()=>setVisible(false)}
+            onClick={() => setVisible(false)}
             className="py-3 pl-5 border  text-black opacity-90"
           >
             COLLECTION
           </NavLink>
           <NavLink
             to="/about"
-            onClick={()=>setVisible(false)}
+            onClick={() => setVisible(false)}
             className="py-3 pl-5 border  text-black opacity-90"
           >
             ABOUT
           </NavLink>
           <NavLink
             to="/contact"
-            onClick={()=>setVisible(false)}
+            onClick={() => setVisible(false)}
             className="py-3 pl-5 border  text-black opacity-90"
           >
             CONTACT
