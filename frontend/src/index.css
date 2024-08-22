@@ -7,14 +7,9 @@ a.active hr {
   display: block;
 }
 
-/* html, body {
-    overflow-x: hidden;
-  }
-   */
-
-*{
-    font-family: Outfit;
-}  
+* {
+  font-family: Outfit;
+}
 
 .prata-regular {
   font-family: "Prata", serif;
@@ -22,12 +17,9 @@ a.active hr {
   font-style: normal;
 }
 
-
-
-@media (max-width:640px) {
-  a.active{
+@media (max-width: 640px) {
+  a.active {
     background-color: rgba(0, 0, 0, 0.886);
     color: white;
   }
-  
 }
