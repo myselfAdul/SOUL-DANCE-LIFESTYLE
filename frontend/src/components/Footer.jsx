@@ -3,11 +3,11 @@ import { assets } from '../assets/assets';
 
 const Footer = () => {
   return (
-    <div className="text-gray-900 py-10 text-justify">
+    <div className="text-gray-900 py-10 mt-20 text-justify">
       <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] justify-between items-start gap-8 mb-10">
         {/* Company Info */}
         <div>
-          <img src={assets.souldance544} alt="Logo" className="w-2/4  mb-4" />
+          <img src={assets.souldance544} alt="Logo" className="w-1/2 sm:w-2/3 md:w-1/2 lg:w-2/6 mb-4" />
           <p className="text-gray-500 sm:w-3/4 ">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex dolor
             dignissimos odit voluptate ullam reprehenderit itaque delectus

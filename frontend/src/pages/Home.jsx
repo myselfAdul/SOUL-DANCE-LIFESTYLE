@@ -14,7 +14,6 @@ const Home = () => {
       <BestSeller/>
       <Policy/>
       <NewsLetter/>
-      <Footer/>
     </div>
   )
 }
