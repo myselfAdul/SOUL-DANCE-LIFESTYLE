@@ -13,6 +13,8 @@ const Collection = () => {
   const [category, setCategory] = useState([])
   const [subCategory, setSubCategory] =useState([])
 
+  const [sortType, setSortType] =  useState('relavent')
+
   const toggleCategory =(e)=>{
     if (category.includes(e.target.value)) {
       setCategory(prev=> prev.filter(item => item !== e.target.value))
@@ -52,13 +54,36 @@ const Collection = () => {
 
   }
 
+  const sortProduct = () =>{
+    let filteredProductCopy = filterProducts.slice()
+
+    switch (sortType) {
+      case 'low-high':
+        setFilterProducts(filteredProductCopy.sort((a,b)=>(a.price - b.price)))   
+        break;
+      case 'high-low':
+        setFilterProducts(filteredProductCopy.sort((a,b)=>(b.price - a.price))) 
+        break
+    
+      default:
+        applyFilter()
+        break;
+    }
+    // setFilterProducts(filteredProductCopy)
+  }
+
   // useEffect(()=>{
   //   setFilterProducts(products)
   // }, [])
 
+
   useEffect(()=>{
     applyFilter()
   }, [category,subCategory])
+
+  useEffect(()=>{
+    sortProduct()
+  }, [sortType])
 
 
 
@@ -184,7 +209,7 @@ const Collection = () => {
           <Title text1={"ALL"} text2={"PRODUCTS"} />
 
           {/* Product Sorting */}
-          <select className="border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-gray-400 text-sm w-2/6 sm:w-2/5">
+          <select onChange={(e)=>setSortType(e.target.value)} className=" border border-gray-300 px-4 py-2 rounded outline-none text-sm w-2/6 sm:w-2/12">
             <option value="relevant">Sort by Relevance</option>
             <option value="low-high">Sort by Price: Low to High</option>
             <option value="high-low">Sort by Price: High to Low</option>
@@ -192,7 +217,7 @@ const Collection = () => {
         </div>
         {/* render all products here */}
 
-        <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 items-center justify-center">
+        <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 items-center justify-center text-center sm:text-justify">
           {filterProducts.map((item, index)=>(
             <ProductItem key={index} name={item.name} price={item.price} id={item._id} image={item.image} />
           ))}
