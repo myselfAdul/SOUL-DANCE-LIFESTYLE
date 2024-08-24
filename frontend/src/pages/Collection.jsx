@@ -10,9 +10,57 @@ const Collection = () => {
 
   const [filterProducts, setFilterProducts] = useState([])
 
+  const [category, setCategory] = useState([])
+  const [subCategory, setSubCategory] =useState([])
+
+  const toggleCategory =(e)=>{
+    if (category.includes(e.target.value)) {
+      setCategory(prev=> prev.filter(item => item !== e.target.value))
+      
+    }
+    else{
+      setCategory(prev=> [...prev, e.target.value])
+    }
+  }
+
+
+  const toggleSubCategory =(e)=>{
+    if (subCategory.includes(e.target.value)) {
+      setSubCategory(prev=> prev.filter(item => item !== e.target.value))
+      
+    }
+    else{
+      setSubCategory(prev=> [...prev, e.target.value])
+    }
+  }
+
+  const applyFilter = ()=>{
+    let productCopy = products.slice() 
+    // console.log(productCopy);
+    
+    if (category.length > 0) {
+      productCopy = productCopy.filter((item) => category.includes(item.category))
+      
+    }
+
+    if (subCategory.length >0) {
+      productCopy = productCopy.filter((item) => subCategory.includes(item.subCategory))
+      
+    }
+    // setSubCategory(productCopy)
+    setFilterProducts(productCopy)
+
+  }
+
+  // useEffect(()=>{
+  //   setFilterProducts(products)
+  // }, [])
+
   useEffect(()=>{
-    setFilterProducts(products)
-  }, [])
+    applyFilter()
+  }, [category,subCategory])
+
+
 
   const filterToogle = () => {
     setShowFilter(!showFilter);
@@ -49,6 +97,7 @@ const Collection = () => {
                   name="category"
                   value={"Men"}
                   className="mr-2"
+                  onChange={toggleCategory}
                 />{" "}
                 Men
               </label>
@@ -60,6 +109,7 @@ const Collection = () => {
                   name="category"
                   value={"Women"}
                   className="mr-2"
+                  onChange={toggleCategory}
                 />{" "}
                 Women
               </label>
@@ -71,6 +121,7 @@ const Collection = () => {
                   name="category"
                   value={"Kids"}
                   className="mr-2"
+                  onChange={toggleCategory}
                 />{" "}
                 Kids
               </label>
@@ -93,6 +144,7 @@ const Collection = () => {
                   name="category"
                   value={"Topwear"}
                   className="mr-2"
+                  onChange={toggleSubCategory}
                 />{" "}
                 Topwear
               </label>
@@ -104,6 +156,7 @@ const Collection = () => {
                   name="category"
                   value={"Bottomwear"}
                   className="mr-2"
+                  onChange={toggleSubCategory}
                 />{" "}
                 Bottomwear
               </label>
@@ -115,6 +168,7 @@ const Collection = () => {
                   name="category"
                   value={"Winterwear"}
                   className="mr-2"
+                  onChange={toggleSubCategory}
                 />{" "}
                 Winterwear
               </label>
