@@ -54,6 +54,8 @@ const Collection = () => {
 
   }
 
+  // Sorting products
+
   const sortProduct = () =>{
     let filteredProductCopy = filterProducts.slice()
 
