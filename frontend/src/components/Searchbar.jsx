@@ -16,7 +16,7 @@ const Searchbar = () => {
         else{
             setShowSearch(false)
         }
-
+    
     },[location.pathname])
 
   return showSearch ? (
