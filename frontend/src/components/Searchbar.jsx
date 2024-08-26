@@ -1,10 +1,23 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import { assets } from '../assets/assets'
+import { useLocation } from 'react-router-dom'
 
 const Searchbar = () => {
 
     const {search, setSearch, showSearch, setShowSearch } = useContext(ShopContext)
+    const location = useLocation()
+
+    useEffect(()=>{
+        if (location.pathname == "/collection") {
+            setShowSearch(true)
+            
+        }
+        else{
+            setShowSearch(false)
+        }
+
+    },[location.pathname])
 
   return showSearch ? (
     <div className='flex border-t border-b bg-gray-50 items-center text-center justify-center'>
