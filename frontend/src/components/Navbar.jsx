@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext.jsx";
 
 const Navbar = () => {
-  const {showSearch, setShowSearch} = useContext(ShopContext)
+  const {showSearch, setShowSearch, getCartCount} = useContext(ShopContext)
   const [visible, setVisible] = useState(false);
 
   return (
@@ -61,7 +61,7 @@ const Navbar = () => {
           rounded-full bg-slate-600 text-center leading-4 
           text-white p-[1px] w-4 items-center  text-[10px]"
           >
-            10
+            {getCartCount()}
           </p>
         </Link>
         <img
