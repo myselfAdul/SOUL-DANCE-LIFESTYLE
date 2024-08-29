@@ -38,6 +38,7 @@ const Collection = () => {
 
   const applyFilter = ()=>{
     let productCopy = products.slice() 
+    // let productCopy = structuredClone(products)
     // console.log(productCopy);
 
     // search product
